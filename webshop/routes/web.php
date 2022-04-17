@@ -25,6 +25,8 @@ Route::middleware("auth")->group(function(){
     Route::get('/cart', [MainController::class, 'cart'])->name('cart');
     Route::post('/add_product', [MainController::class, 'add_to_cart'])->name('add_to_cart');
     Route::post('/delete_item', [MainController::class, 'delete_item'])->name('delete_item');
+    Route::get('/reset_cart', [MainController::class, 'reset_cart'])->name('reset_cart');
+    Route::get('/thanks', [MainController::class, 'thanks'])->name('thanks');
 });
 Route::middleware("guest")->group(function(){
     Route::get('/login', [MainController::class, 'login_view'])->name('login');

@@ -17,6 +17,9 @@ class MainController extends Controller
     public function about(){
         return view('about');
     }
+    public function thanks(){
+        return view('thank');
+    }
     public function view_product($id){
         $products = new Products();
         return view('view_product', ['product'=> $products::find($id)]);
@@ -69,6 +72,15 @@ class MainController extends Controller
             $sum_price+=$pr->price;
         }
         return view('checkout',['products' => $products, 'sum'=>$sum_price]);
+    }
+    public function reset_cart(){
+        $cart = new Cart();
+        $user_id = request()->user()->id;
+        $carts = $cart::where('user_id','=',$user_id)->get();
+        foreach($carts as $cart){
+            $cart->delete();
+        }
+        return redirect(route('home'));
     }
     public function delete_item(Request $request){
         $data = $request->validate([

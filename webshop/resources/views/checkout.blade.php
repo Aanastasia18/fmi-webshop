@@ -126,7 +126,7 @@
           </div>
         </div>
         <hr class="mb-4">
-        <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+        <a href="{{ route('thanks') }}" class="btn btn-primary btn-lg btn-block" type="button">Continue to checkout</a>
       </form>
     </div>
   </div>
